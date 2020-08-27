@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
   "engines": {
     "node": ">=14"
   },
@@ -19,6 +22,10 @@
     "url": "https://github.com/AlexeyBritvin/frontend-project-lvl2/issues"
   },
   "type": "module",
+  "exports": {
+    "import": "./wrapper/wrapper.mjs",
+    "require": "./wrapper/wrapper.cjs"
+  },
   "jest": {
     "testEnvironment": "node",
     "transform": {}
