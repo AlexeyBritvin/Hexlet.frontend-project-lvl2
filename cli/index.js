@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { Command } from '../wrapper/wrapper.mjs';
+import Command from '../wrapper/wrapper.mjs';
 import findDiff from './diff.js';
 
 const program = new Command();
