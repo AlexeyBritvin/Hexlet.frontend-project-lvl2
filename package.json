@@ -4,7 +4,8 @@
   "description": "Hexlet lvl2 project",
   "main": "/cli/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx -n --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "npx -n --experimental-vm-modules node_modules/jest/bin/jest.js --watch"
   },
   "bin": {
     "gendiff": "bin/gendiff.js"
