@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-test('diff two different files', () => {
+test('diff two different json files', () => {
   const file1 = readFile('file1.json');
   const file2 = readFile('file2.json');
   const result = readFile('result1.json');
@@ -21,7 +21,7 @@ test('diff two different files', () => {
   expect(diff).toEqual(JSON.parse(result));
 });
 
-test('diff with empty file', () => {
+test('diff with empty json file', () => {
   const file1 = readFile('file1.json');
   const result = readFile('result2.json');
   const diff = findDiff(file1, '{}');
@@ -29,8 +29,33 @@ test('diff with empty file', () => {
   expect(diff).toEqual(JSON.parse(result));
 });
 
-test('diff same files', () => {
+test('diff same json files', () => {
   const file1 = readFile('file1.json');
+  const result = readFile('result3.json');
+  const diff = findDiff(file1, file1);
+
+  expect(diff).toEqual(JSON.parse(result));
+});
+
+test('diff two different yaml files', () => {
+  const file1 = readFile('file1.yml');
+  const file2 = readFile('file2.yml');
+  const result = readFile('result1.json');
+  const diff = findDiff(file1, file2);
+
+  expect(diff).toEqual(JSON.parse(result));
+});
+
+test('diff with empty yaml file', () => {
+  const file1 = readFile('file1.yml');
+  const result = readFile('result2.json');
+  const diff = findDiff(file1, '{}');
+
+  expect(diff).toEqual(JSON.parse(result));
+});
+
+test('diff same yaml files', () => {
+  const file1 = readFile('file1.yml');
   const result = readFile('result3.json');
   const diff = findDiff(file1, file1);
 
