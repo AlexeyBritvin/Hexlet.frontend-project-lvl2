@@ -4,24 +4,23 @@ const { has } = lodash;
 
 const findDiff = (data1, data2) => {
   const result = {};
-  const [oldObj, newObj] = [JSON.parse(data1), JSON.parse(data2)];
 
-  Object.keys(newObj).forEach((key) => {
-    if (has(oldObj, key)) {
-      if (newObj[key] === oldObj[key]) {
-        result[`${key}`] = newObj[key];
+  Object.keys(data2).forEach((key) => {
+    if (has(data1, key)) {
+      if (data2[key] === data1[key]) {
+        result[`${key}`] = data2[key];
       } else {
-        result[`- ${key}`] = oldObj[key];
-        result[`+ ${key}`] = newObj[key];
+        result[`- ${key}`] = data1[key];
+        result[`+ ${key}`] = data2[key];
       }
     } else {
-      result[`+ ${key}`] = newObj[key];
+      result[`+ ${key}`] = data2[key];
     }
   });
 
-  Object.keys(oldObj).forEach((key) => {
-    if (!has(newObj, key)) {
-      result[`- ${key}`] = oldObj[key];
+  Object.keys(data1).forEach((key) => {
+    if (!has(data2, key)) {
+      result[`- ${key}`] = data1[key];
     }
   });
 
