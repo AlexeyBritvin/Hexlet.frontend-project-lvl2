@@ -1,17 +1,11 @@
-import fs from 'fs';
 import yaml from 'js-yaml';
 
-const encodingFormat = 'utf8';
-
-export const parseYaml = (filePath) => {
+export const parseYaml = (content) => {
   try {
-    return yaml.safeLoad(fs.readFileSync(filePath, encodingFormat));
+    return yaml.safeLoad(content);
   } catch (err) {
     throw new Error(err);
   }
 };
 
-export const parseJson = (filePath) => {
-  const content = fs.readFileSync(filePath, encodingFormat);
-  return JSON.parse(content);
-};
+export const parseJson = (content) => JSON.parse(content);
